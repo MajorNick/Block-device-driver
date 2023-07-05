@@ -50,10 +50,10 @@ static struct bio *sbdd_clone_bio_req(struct bio *bio)
 		pr_err("unable to clone bio req\n");
 		return NULL;
 	}
-	//cloned->bi_rw = bio->bi_rw;
-	//cloned->bi_sector = bio->bi_sector;
+
 	return cloned;
 }
+//forward request to device, /dev/sda by default
 static void forward_request(struct bio *bio_req){
 	if (target != NULL){
 		struct bio *cloned = sbdd_clone_bio_req(bio_req);
